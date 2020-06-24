@@ -1,0 +1,14 @@
+version: '3.3'
+
+services:
+  polling-app:
+    container_name: polling-app-server
+    build: .
+    volumes:
+      - ./src/:/etc/polling-app/src
+    ports:
+      - '5000:5000'
+    environment:
+      - FLASK_APP=src/main.py
+      - FLASK_DEBUG=1
+    command: flask run --host=0.0.0.0
